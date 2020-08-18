@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'what is your favorite color?',
       'answers': ['red', 'green', 'blue', 'white']
@@ -30,16 +30,16 @@ class _MyAppState extends State<MyApp> {
     }
   ];
 
-  var questionIdx = 0;
+  var _questionIdx = 0;
 
   void _answerQuestion() {
     setState(() {
-      questionIdx = questionIdx + 1;
+      _questionIdx = _questionIdx + 1;
     });
 
-    print(questionIdx);
+    print(_questionIdx);
 
-    if (questionIdx < questions.length) {
+    if (_questionIdx < _questions.length) {
       print('we have more questions!');
     } else {
       print('you have completed all the questions!');
@@ -51,10 +51,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(title: Text('My First App')),
-            body: questionIdx < questions.length
+            body: _questionIdx < _questions.length
                 ? (Column(children: [
-                    Question(questions[questionIdx]['questionText']),
-                    ...(questions[questionIdx]['answers'] as List<String>)
+                    Question(_questions[_questionIdx]['questionText']),
+                    ...(_questions[_questionIdx]['answers'] as List<String>)
                         .map((answer) {
                       return Answer(_answerQuestion, answer);
                     }).toList()
