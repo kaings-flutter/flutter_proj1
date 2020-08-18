@@ -8,6 +8,7 @@ class Answer extends StatelessWidget {
 
   Answer(this.selectHandler, this.questionText);
 
+  @override
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
