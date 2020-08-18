@@ -37,9 +37,9 @@ class _MyAppState extends State<MyApp> {
             appBar: AppBar(title: Text('My First App')),
             body: Column(children: [
               Question(questions[questionIdx]),
-              Answer(),
-              Answer(),
-              Answer()
+              Answer(_answerQuestion),
+              Answer(_answerQuestion),
+              Answer(_answerQuestion)
             ])));
   }
 }
