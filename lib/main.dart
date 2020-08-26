@@ -18,26 +18,48 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'what is your favorite color?',
-      'answers': ['red', 'green', 'blue', 'white']
+      'answers': [
+        {'answer': 'red', 'score': 2},
+        {'answer': 'green', 'score': 3},
+        {'answer': 'blue', 'score': 5},
+        {'answer': 'white', 'score': 6}
+      ]
     },
     {
       'questionText': 'what is your favorite animal?',
-      'answers': ['dog', 'cat', 'rabbit', 'fish', 'hamster']
+      'answers': [
+        {'answer': 'dog', 'score': 2},
+        {'answer': 'cat', 'score': 5},
+        {'answer': 'rabbit', 'score': 7},
+        {'answer': 'fish', 'score': 8},
+        {'answer': 'hamster', 'score': 9}
+      ]
     },
     {
       'questionText': 'what is your favorite teacher?',
-      'answers': ['Ted', 'Bruce', 'Shell', 'Tom', 'Harry', 'Barny']
+      'answers': [
+        {'answer': 'Ted', 'score': 3},
+        {'answer': 'Bruce', 'score': 4},
+        {'answer': 'Shell', 'score': 5},
+        {'answer': 'Tom', 'score': 2},
+        {'answer': 'Harry', 'score': 8},
+        {'answer': 'Barny', 'score': 7}
+      ]
     }
   ];
 
   var _questionIdx = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIdx = _questionIdx + 1;
     });
 
     print(_questionIdx);
+    print(_totalScore);
 
     if (_questionIdx < _questions.length) {
       print('we have more questions!');
@@ -56,6 +78,6 @@ class _MyAppState extends State<MyApp> {
                     questions: _questions,
                     answerQuestion: _answerQuestion,
                     questionIdx: _questionIdx)
-                : Result()));
+                : Result(_totalScore)));
   }
 }
